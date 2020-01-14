@@ -3,7 +3,7 @@ import * as express from 'express'
 import { Request, Response } from 'express'
 
 class HomeController implements IControllerBase {
-    public path = '/'
+    public path = '/home'
     public router = express.Router()
     
 
@@ -14,7 +14,6 @@ class HomeController implements IControllerBase {
 
     public initRoutes() {
         this.router.get(`${this.path}`, this.index);
-        this.router.get(`/api`, this.index);
     }
 
     public index(req: Request, res: Response){

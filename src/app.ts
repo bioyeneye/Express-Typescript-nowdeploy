@@ -5,6 +5,7 @@ import IControllerBase from 'controllers/abstract/icontrollerbase.abstract'
 class App {
     public app: Application
     public port: number
+    public baseurl: string = "/api"
 
     constructor(appInit: { port: number; middleWares: any; controllers: IControllerBase[]; }) {
         this.app = express()
@@ -20,9 +21,9 @@ class App {
         })
     }
 
-    private routes(controllers: { forEach: (arg0: (controller: any) => void) => void; }) {
+    private routes(controllers: { forEach: (arg0: (controller: IControllerBase ) => void) => void; }) {
         controllers.forEach(controller => {
-            this.app.use('/', controller.router)
+            this.app.use(`${this.baseurl}/`, controller.router)
         })
     }
 

@@ -1,8 +1,12 @@
+import { Router } from "express";
+
 /**
  * Base controller for express controllers
  */
 interface IControllerBase {
-    initRoutes(): any
+    path: string;
+    router: Router;
+    initRoutes(): any;
 }
 
 export default IControllerBase

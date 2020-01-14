@@ -5,17 +5,16 @@ import PostService from '../../src/core/service/post.service'
 
 
 class PostController implements IControllerBase {
-    public path = '/api'
+    public path = 'posts'
     public router = express.Router()
     
 
     constructor() {
         this.initRoutes();
-        //this.postService = new PostService();
     }
 
     public initRoutes() {
-        this.router.get(`${this.path}/posts`, this.posts);
+        this.router.get(`${this.path}`, this.posts);
     }
 
     public posts(req: Request, res: Response){
