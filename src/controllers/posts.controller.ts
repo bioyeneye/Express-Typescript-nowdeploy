@@ -1,13 +1,12 @@
 import * as express from 'express'
 import { Request, Response } from 'express'
 import IControllerBase from './abstract/icontrollerbase.abstract'
-import PostService from '../../src/core/service/post.service'
+import {IPostService, PostService} from "../core/service/post.service";
 
 
 class PostController implements IControllerBase {
-    public path = 'posts'
+    public path = '/posts'
     public router = express.Router()
-    
 
     constructor() {
         this.initRoutes();
@@ -17,30 +16,17 @@ class PostController implements IControllerBase {
         this.router.get(`${this.path}`, this.posts);
     }
 
-    public posts(req: Request, res: Response){
-        const users = [
-            {
-                id: 1,
-                name: 'Ali'
-            },
-            {
-                id: 2,
-                name: 'Can'
-            },
-            {
-                id: 3,
-                name: 'Ahmet'
-            }
-        ]
-
-        var posts = null;
-        var postService = new PostService();
-        postService.getPosts().subscribe((result) => {
-            posts = result
-            res.json(posts)
-        }, (error) => {
-            res.json(posts)
-        });
+    public async posts(req: Request, res: Response){
+        try {
+            let postService = new PostService();
+            let posts = await postService.getPosts().toPromise();
+            res.json(posts);
+        }catch (e) {
+            res.status(400)
+                .json({
+                    message: "No posts"
+                });
+        }
     }
 }
 

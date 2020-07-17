@@ -10,8 +10,9 @@ import HomeController from './controllers/home.controller'
 const app = new App({
     port: 5000,
     controllers: [
-        new HomeController(),
         new PostController(),
+
+        new HomeController(),
     ],
     middleWares: [
         bodyParser.json(),
