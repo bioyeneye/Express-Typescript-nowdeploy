@@ -122,17 +122,23 @@ dist
 .idea/**/dictionaries
 .idea/**/shelf
 
+src/.idea/**/workspace.xml
+src/.idea/**/tasks.xml
+src/.idea/**/usage.statistics.xml
+src/.idea/**/dictionaries
+src/.idea/**/shelf
+
 # Generated files
-.idea/**/contentModel.xml
+src/.idea/**/contentModel.xml
 
 # Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
+src/.idea/**/dataSources/
+src/.idea/**/dataSources.ids
+src/.idea/**/dataSources.local.xml
+src/.idea/**/sqlDataSources.xml
+src/.idea/**/dynamic.xml
+src/.idea/**/uiDesigner.xml
+src/.idea/**/dbnavigator.xml
 
 # Gradle
 .idea/**/gradle.xml
