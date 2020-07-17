@@ -5,6 +5,7 @@ import BaseHttpClientService from "./basehttpclient.service";
 
 export interface IPostService {
     getPosts(): Observable<PostResponse[]>;
+    getPost(): Observable<PostResponse>;
 }
 
 export class PostService extends BaseHttpClientService {
@@ -22,8 +23,8 @@ export class PostService extends BaseHttpClientService {
             }));
     }
 
-    public getPost(id: number): Observable<PostResponse[]> {
-        return this.http.get<PostResponse[]>("https://jsonplaceholder.typicode.com/posts")
+    public getPost(id: number): Observable<PostResponse> {
+        return this.http.get<PostResponse>(`https://jsonplaceholder.typicode.com/posts/${id}`)
             .pipe(map(result => {
                 return result.data;
             }), catchError((error) => {
