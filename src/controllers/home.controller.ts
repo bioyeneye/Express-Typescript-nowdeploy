@@ -3,13 +3,13 @@ import * as express from 'express'
 import { Request, Response } from 'express'
 
 class HomeController implements IControllerBase {
-    public path = '/home'
-    public router = express.Router()
-    
+    path: string = '/';
+    versionNumber: number;
+    public router = express.Router();
+    isApiController: boolean = false;
 
     constructor() {
         this.initRoutes();
-        //this.postService = new PostService();
     }
 
     public initRoutes() {
@@ -21,6 +21,7 @@ class HomeController implements IControllerBase {
             health: 'ma fo mo sounding...'
         })
     }
+
 }
 
 export default HomeController

@@ -1,12 +1,15 @@
 import * as express from 'express'
-import { Request, Response } from 'express'
+import {Request, Response} from 'express'
 import IControllerBase from './abstract/icontrollerbase.abstract'
-import {IPostService, PostService} from "../core/service/post.service";
+import {PostService} from "../core/service/post.service";
 
 
 class PostController implements IControllerBase {
-    public path = '/posts'
-    public router = express.Router()
+    versionNumber: number = 1;
+    public path = '/posts';
+    public router = express.Router();
+    isApiController: boolean = true;
+
 
     constructor() {
         this.initRoutes();
@@ -17,7 +20,7 @@ class PostController implements IControllerBase {
         this.router.get(`${this.path}/:id`, this.getById);
     }
 
-    public async get(req: Request, res: Response){
+    public async get(req: Request, res: Response) {
         try {
             let postService = new PostService();
             let posts = await postService.getPosts().toPromise();
@@ -25,7 +28,7 @@ class PostController implements IControllerBase {
                 data: posts,
                 count: posts.length
             });
-        }catch (e) {
+        } catch (e) {
             res.status(400)
                 .json({
                     message: "No posts"
@@ -33,7 +36,7 @@ class PostController implements IControllerBase {
         }
     }
 
-    public async getById(req: Request, res: Response){
+    public async getById(req: Request, res: Response) {
         try {
             let id = req.params.id;
             let postService = new PostService();
@@ -41,13 +44,14 @@ class PostController implements IControllerBase {
             res.json({
                 data: posts
             });
-        }catch (e) {
+        } catch (e) {
             res.status(400)
                 .json({
                     message: "No posts"
                 });
         }
     }
+
 }
 
 export default PostController

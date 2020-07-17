@@ -3,11 +3,6 @@ import {catchError, map} from "rxjs/operators";
 import { PostResponse } from "models/reponse/post.response";
 import BaseHttpClientService from "./basehttpclient.service";
 
-export interface IPostService {
-    getPosts(): Observable<PostResponse[]>;
-    getPost(): Observable<PostResponse>;
-}
-
 export class PostService extends BaseHttpClientService {
 
     constructor() {

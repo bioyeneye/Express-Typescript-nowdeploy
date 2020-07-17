@@ -7,6 +7,8 @@ interface IControllerBase {
     path: string;
     router: Router;
     initRoutes(): any;
+    isApiController: boolean;
+    versionNumber: number;
 }
 
 export default IControllerBase
