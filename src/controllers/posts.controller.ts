@@ -21,7 +21,10 @@ class PostController implements IControllerBase {
         try {
             let postService = new PostService();
             let posts = await postService.getPosts().toPromise();
-            res.json(posts);
+            res.json({
+                data: posts,
+                count: posts.length
+            });
         }catch (e) {
             res.status(400)
                 .json({
@@ -35,7 +38,9 @@ class PostController implements IControllerBase {
             let id = req.params.id;
             let postService = new PostService();
             let posts = await postService.getPost(parseInt(id)).toPromise();
-            res.json(posts);
+            res.json({
+                data: posts
+            });
         }catch (e) {
             res.status(400)
                 .json({
